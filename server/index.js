@@ -70,7 +70,7 @@ app.get('/api/journals',verifyBearer,async(req,res)=>{
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
 const dist=path.join(__dirname,'..','dist');
 app.use(express.static(dist));
-app.get('*',(req,res)=>res.sendFile(path.join(dist,'index.html')));
+app.get(/.*/, (req,res)=>res.sendFile(path.join(dist,'index.html')));
 
 const port=process.env.PORT||8080;
 app.listen(port,()=>console.log(`API listening on ${port}`));
